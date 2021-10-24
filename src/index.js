@@ -4,9 +4,10 @@ const app = express();
 
 const {PORT} = require('./constants');
 const routes = require('./routes');
+const { dbConfig } = require('./config/dbConfig')
 
 //services
-//add db
+//global error handler
 //add models
 //authentication
 //authorization
@@ -16,5 +17,10 @@ require('./config/hbsConfig')(app);
 
 app.use(routes);
 
-
-app.listen(PORT, () => console.log(`The app is running on http://localhost:${PORT}`));
+dbConfig()
+    .then(() => {
+        app.listen(PORT, () => console.log(`The app is running on http://localhost:${PORT}`));
+    })
+    .catch(err => {
+        console.log('Cannot connect DB: ', err);
+    });
