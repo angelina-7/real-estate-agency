@@ -1,0 +1,27 @@
+{
+  "name": "real-estate-agency",
+  "version": "1.0.0",
+  "description": "SoftUni JS Back-end Project",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angelina-7/real-estate-agency.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angelina-7/real-estate-agency/issues"
+  },
+  "homepage": "https://github.com/angelina-7/real-estate-agency#readme"
+}
