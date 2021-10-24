@@ -6,9 +6,7 @@ const {PORT} = require('./constants');
 const routes = require('./routes');
 const { dbConfig } = require('./config/dbConfig')
 
-//services
 //global error handler
-//add models
 //authentication
 //authorization
 
