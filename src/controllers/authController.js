@@ -5,22 +5,41 @@ router.get('/login', (req, res) => {
     res.render('auth/login');
 });
 
+router.post('/login', async (req, res) => {
+    const { username, pass } = req.body;
+
+    try {
+        let token = await authService.login({ username, password: pass });
+
+        //todo set token in httpOnly cookie
+
+        res.redirect('/');
+    } catch (error) {
+        //todo return error response
+    }
+    
+});
+
 router.get('/register', (req, res) => {
     res.render('auth/register');
 });
 
 router.post('/register', async (req, res) => {
-    const {name, username, pass, repPass} = req.body;
+    const { name, username, pass, repPass } = req.body;
 
-    if(pass !== repPass){
+    if (pass !== repPass) {
         res.locals.error = "password mismatch";
 
         return res.render('auth/register');
     }
 
-    await authService.register({name, username, password: pass});
+    try {
+        await authService.register({ name, username, password: pass });
+        res.redirect('/');
+    } catch (error) {
+        //todo return error response
+    }
 
-    res.redirect('/');
-})
+});
 
 module.exports = router;
