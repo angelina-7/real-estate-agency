@@ -36,9 +36,17 @@ router.post('/register', async (req, res) => {
     }
 
     try {
-        await authService.register({ name, username, password: pass });
+        let isSaved = await authService.register({ name, username, password: pass });
+
+        if(isSaved){
+            let token = await authService.login({username, password: pass});
+            res.cookie(AUTH_COOKIE_NAME, token);
+        }
+        
         res.redirect('/');
+        
     } catch (error) {
+        // console.log(error);
         //todo return error response
     }
 

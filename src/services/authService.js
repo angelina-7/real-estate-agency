@@ -30,5 +30,5 @@ exports.login = async ({username, password}) => {
 };
 
 exports.register = (userData) => {
-    User.create(userData);
+    return User.create(userData);
 };
