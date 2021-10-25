@@ -9,5 +9,9 @@ exports.getAll = () => {
 };
 
 exports.getTopHouses = () => {
-    return Housing.find().sort({createdAt: -1}).limit(3).lean();
+    return Housing.find().sort({ createdAt: -1 }).limit(3).lean();
 };
+
+exports.getOneById = (_id) => {
+    return Housing.findById(_id).lean();
+}
