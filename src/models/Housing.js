@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const housingSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        minlength: [6, 'Name should be at leats 6 chars.']
     },
     type: {
         type: String,
@@ -12,11 +13,14 @@ const housingSchema = new mongoose.Schema({
     },
     year: {
         type: Number,
-        required: true
+        required: true,
+        min: [1850, 'Year built should be after 1850'],
+        max: [2021, 'Year built should not be after 2021']
     },
     city: {
         type: String,
-        required: true
+        required: true,
+        minlength: [4, 'City should be at least 4 chars.']
     },
     image: {
         type: String,
@@ -24,11 +28,14 @@ const housingSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: true
+        required: true,
+        maxlength: [60, 'Description should be below 60 chars.']
     },
     availablePieces: {
         type: Number,
-        required: true
+        required: true,
+        min: [0, 'Available pieces cannot be below 0'],
+        max: [10, 'Available pieces should be below or equal to 10']
     },
     tenants: [
         {

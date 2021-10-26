@@ -1,7 +1,7 @@
 const Housing = require('../models/Housing');
 
 exports.create = (housingData) => {
-    Housing.create(housingData);
+    return Housing.create(housingData);
 };
 
 exports.getAll = () => {
