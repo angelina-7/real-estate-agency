@@ -67,13 +67,22 @@ router.get('/:housingId/edit', isOwner, async (req, res) => {
 });
 
 router.post('/:housingId/edit', isOwner, async (req, res) => {
-    await housingService.updateOne(req.params.housingId, req.body);
+    try {
+        await housingService.updateOne(req.params.housingId, req.body);
 
-    res.redirect(`/housing/${req.params.housingId}/details`);
+        res.redirect(`/housing/${req.params.housingId}/details`);
+    } catch (error) {
+        let housing = await housingService.getOneById(req.params.housingId);
+        let housingData = housing.toObject();
+
+        res.render('housing/edit', {...housingData, error: getErrorMessage(error)});
+    }
+    
 });
 
 router.get('/search', (req, res) => {
     res.render('housing/search');
+    //note GET: search param in -> req.query.type
 });
 
 router.post('/search', async (req, res) => {

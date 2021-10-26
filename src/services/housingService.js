@@ -25,7 +25,7 @@ exports.addTenant = (housingId, tenantId) => {
 };
 
 exports.updateOne = (housingId, housingData) => {
-    return Housing.findByIdAndUpdate(housingId, housingData);
+    return Housing.findByIdAndUpdate(housingId, housingData, {runValidators: true});
 };
 
 exports.delete = (housingId) => {

@@ -24,7 +24,8 @@ const housingSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        required: true
+        required: true,
+        validate: [/^https?:\/\//i, 'Should be valid URL']
     },
     description: {
         type: String,
