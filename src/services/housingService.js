@@ -9,7 +9,7 @@ exports.getAll = () => {
 };
 
 exports.getAllByType = (type) => {
-    return Housing.find({type: type}).lean();
+    return Housing.find({type: {$regex: type, $options: 'i'}}).lean();
 };
 
 exports.getTopHouses = () => {

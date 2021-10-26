@@ -80,8 +80,9 @@ router.post('/:housingId/edit', isOwner, async (req, res) => {
     
 });
 
-router.get('/search', (req, res) => {
-    res.render('housing/search');
+router.get('/search', async (req, res) => {
+    let housings = await housingService.getAll();
+    res.render('housing/search', {housings});
     //note GET: search param in -> req.query.type
 });
 
