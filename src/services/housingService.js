@@ -17,5 +17,13 @@ exports.getOneById = (_id) => {
 };
 
 exports.addTenant = (housingId, tenantId) => {
-    return Housing.findOneAndUpdate({_id: housingId}, { $push: {tenants: tenantId}});
+    return Housing.findOneAndUpdate({_id: housingId}, { $push: {tenants: tenantId}}); // $inc: { availablePieces: -1 }
+};
+
+exports.updateOne = (housingId, housingData) => {
+    return Housing.findByIdAndUpdate(housingId, housingData);
+};
+
+exports.delete = (housingId) => {
+    return Housing.findByIdAndDelete(housingId);
 };
