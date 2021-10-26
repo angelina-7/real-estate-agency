@@ -72,4 +72,14 @@ router.post('/:housingId/edit', isOwner, async (req, res) => {
     res.redirect(`/housing/${req.params.housingId}/details`);
 });
 
+router.get('/search', (req, res) => {
+    res.render('housing/search');
+});
+
+router.post('/search', async (req, res) => {
+    let housings = await housingService.getAllByType(req.body.type);
+
+    res.render('housing/search', {housings});
+});
+
 module.exports = router;

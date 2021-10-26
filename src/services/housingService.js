@@ -8,6 +8,10 @@ exports.getAll = () => {
     return Housing.find().lean();
 };
 
+exports.getAllByType = (type) => {
+    return Housing.find({type: type}).lean();
+};
+
 exports.getTopHouses = () => {
     return Housing.find().sort({ createdAt: -1 }).limit(3).lean();
 };
