@@ -13,5 +13,9 @@ exports.getTopHouses = () => {
 };
 
 exports.getOneById = (_id) => {
-    return Housing.findById(_id).lean();
-}
+    return Housing.findById(_id).populate('tenants');
+};
+
+exports.addTenant = (housingId, tenantId) => {
+    return Housing.findOneAndUpdate({_id: housingId}, { $push: {tenants: tenantId}});
+};
