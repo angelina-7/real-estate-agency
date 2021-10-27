@@ -6,10 +6,6 @@ const {PORT} = require('./constants');
 const routes = require('./routes');
 const { dbConfig } = require('./config/dbConfig')
 
-//global error handler
-//authentication
-//authorization
-
 require('./config/expressConfig')(app);
 require('./config/hbsConfig')(app);
 

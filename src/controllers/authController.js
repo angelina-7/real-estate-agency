@@ -18,8 +18,7 @@ router.post('/login', isGuest, async (req, res) => {
         res.cookie(AUTH_COOKIE_NAME, token);
         res.redirect('/');
     } catch (error) {
-        res.locals.error = 'Invalid username or password.';
-        res.render('auth/login');
+        res.render('auth/login', {error: getErrorMessage(error)});
     }
     
 });

@@ -15,7 +15,6 @@ router.get('/create', isAuth, (req, res) => {
 })
 
 router.post('/create', isAuth, async (req, res) => {
-    //todo verify url
     try {
         let housingData = {...req.body, owner: req.user._id};
         await housingService.create(housingData);
