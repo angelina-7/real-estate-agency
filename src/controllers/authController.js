@@ -42,9 +42,8 @@ router.post('/register', isGuest, async (req, res) => {
         return res.render('auth/register');
     }
     
-
     try {
-        let isSaved = await authService.register({ validName, username, password: pass });
+        let isSaved = await authService.register({ name: validName, username, password: pass });
 
         if(isSaved){
             let token = await authService.login({username, password: pass});

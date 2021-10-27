@@ -34,15 +34,17 @@ exports.register = (userData) => {
 
 exports.validateFullName = (name) => {
     let fullname = name.split(/\s+/);
-    console.log(fullname);
+    
     if (fullname.length != 2){
         return null;
-    } else {
-        fullname[0] = fullname[0].charAt(0).toUpperCase() + fullname[0].substring(1,fullname[0].length-1).toLowerCase();
-        fullname[1] = fullname[1].charAt(0).toUpperCase() + fullname[1].substring(1,fullname[1].length-1).toLowerCase();
+    } 
 
-        return fullname[0] + ' ' + fullname[1];
-    }
+    fullname[0] = fullname[0].charAt(0).toUpperCase() + fullname[0].substring(1,fullname[0].length).toLowerCase();
+    fullname[1] = fullname[1].charAt(0).toUpperCase() + fullname[1].substring(1,fullname[1].length).toLowerCase();
+
+    let strFullName = fullname[0] + ' ' + fullname[1];
+     return strFullName;
+    
 }
 
 exports.validatePassword = (pass, repPass) => {
